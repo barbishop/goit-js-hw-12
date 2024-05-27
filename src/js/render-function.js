@@ -1,52 +1,48 @@
 import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
 
 export function renderGallery(images) {
   const gallery = document.querySelector('.gallery');
-  const markup = images.hits
+  const markup = images
     .map(hit => {
       return `
-           <li class="gallery-item">
+        <li class="gallery-item">
             <a class="gallery-link" href="${hit.largeImageURL}" download=false>
-                <img src="${hit.webformatURL}" alt="${hit.tags}" class="gallery-img" width=360  onclick="return false" data-source="${hit.largeImageURL}">
+                <img src="${hit.webformatURL}" alt="${hit.tags}" class="gallery-img" width=360 onclick="return false" data-source="${hit.largeImageURL}">
                 <ul class="description">
                     <li>
-                    <p>Likes</p>
-                    <p class="description-value">${hit.likes}</p>
+                        <p>Likes</p>
+                        <p class="description-value">${hit.likes}</p>
                     </li>
                     <li>
-                    <p>Views</p>
-                    <p class="description-value">${hit.views}</p>
+                        <p>Views</p>
+                        <p class="description-value">${hit.views}</p>
                     </li>
                     <li>
-                    <p>Comments</p>
-                    <p class="description-value">${hit.comments}</p>
+                        <p>Comments</p>
+                        <p class="description-value">${hit.comments}</p>
                     </li>
                     <li>
-                    <p>Downloads</p>
-                    <p class="description-value">${hit.downloads}</p>
+                        <p>Downloads</p>
+                        <p class="description-value">${hit.downloads}</p>
                     </li>
                 </ul>
             </a>
-            </li>
-            `;
+        </li>
+        `;
     })
     .join('');
-  gallery.innerHTML = markup;
+
+  gallery.insertAdjacentHTML('beforeend', markup);
 }
 
 export function showMessage(message) {
-  iziToast.show({
-    message: message,
-  });
+  iziToast.show({ message });
 }
 
 export function showLoader() {
-  const loader = document.querySelector('.loader');
-  loader.classList.remove('visually-hidden');
+  document.querySelector('.loader').classList.remove('visually-hidden');
 }
 
 export function hideLoader() {
-  const loader = document.querySelector('.loader');
-  loader.classList.add('visually-hidden');
+  document.querySelector('.loader').classList.add('visually-hidden');
 }
