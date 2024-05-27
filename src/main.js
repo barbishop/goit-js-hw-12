@@ -9,7 +9,7 @@ import {
   showMessage,
   showLoader,
   hideLoader,
-} from './js/render-functions';
+} from './js/render-function.js';
 
 const form = document.querySelector('.form');
 const queryInput = document.querySelector('input[name="query"]');
